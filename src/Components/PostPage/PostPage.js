@@ -3,15 +3,15 @@ import Latest from '../Home/Latest'
 
 
   
-function PostPage(props) {
+function PostPage({page}) {
     
     return (
        <div className="container" style={{padding:"10px"}}>
            
-           <img src={props.data.d.data[0].img} className="post-img ha" />
+           <img src={page.img} className="post-img ha" />
 
                <h3 style={{marginTop:"20px"}}> 
-                     Title :{props.data.d.data[0].title}
+                     Title :{page.title}
                </h3>
            <hr/>
            <h4 style={{marginTop:"10px"}} >
@@ -19,7 +19,7 @@ function PostPage(props) {
           </h4>
 
           <p>
-                 {props.data.d.data[0].description}
+                 {page.description}
           </p>
           
            <Latest/>

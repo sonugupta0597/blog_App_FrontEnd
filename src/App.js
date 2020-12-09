@@ -6,48 +6,48 @@ import Home from './Components/Home/Home';
 import { BrowserRouter as Router , Route } from "react-router-dom";
 import PostPage from './Components/PostPage/PostPage';
 import Latest_Article from './Components/Home/Latest_Article';
-
+import RefferedPage from './Components/RefferedPage';
+import {useState} from "react"
 
 function App() {
-  const gdata={
-    d:  {
-          type:"Sports",
-          data : [{
-              img:"1.jpg",
-              title:"abcde",
-              description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived "
-          }]
-      }
-  }
+
+  
+
+  const [postPage,setPostPage] = useState("");
+  
+
+
   return(
       <div className="container">
         <Router>
          <Heading/>
          <NavBar/>
          <Route path="/" exact>
-         <Home/>
+         <Home action={(data)=>setPostPage(data)}/>
          </Route>
          <Route path="/Home">
          <Home/>
          </Route>
-         <Route path="/PostPage">
-         <PostPage data={gdata}/>
-         </Route>
          <Route path="/Sports">
-         <Latest_Article type={"Latest"}/>
+         <RefferedPage type="sports" action={(data)=>setPostPage(data)} />
          </Route>
          <Route path="/Bollybood">
-         <Latest_Article type={"Latest"}/>
+         <RefferedPage type={"bollybood"} action={(data)=>setPostPage(data)}/>
          </Route>
          <Route path="/Mimes">
-         <Latest_Article type={"Latest"}/>
+         <RefferedPage type={"mimes"} action={(data)=>setPostPage(data)}/>
          </Route>
          <Route path="/News">
-         <Latest_Article type={"Latest"}/>
+         <RefferedPage type={"news"} action={(data)=>setPostPage(data)}/>
          </Route>
          <Route path="/Education">
-         <Latest_Article type={"Latest"}/>
+         <RefferedPage type={"education"} action={(data)=>setPostPage(data)}/>
          </Route>
+
+         <Route path="/PostPage/PostPage">
+         <PostPage page={postPage}/>
+         </Route>
+
          </Router>
       </div>   
   )

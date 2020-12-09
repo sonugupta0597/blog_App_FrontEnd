@@ -1,12 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import {
-    Card, CardText, CardBody, CardLink,
-    CardTitle, CardSubtitle ,CardImg ,Button
-  } from 'reactstrap';
-  
+import { useEffect , useState } from 'react'
+import axios from "axios"
 
 function Latest_Article(props) {
+
+    const [posts,setPosts] = useState([]);
+
+    useEffect(
+        ()=>{
+                  axios.get("/mostLiked").then((res)=>{
+                            setPosts(res.data);
+                  });
+
+        },[posts]
+    );
+    
     return (
 
 
@@ -17,14 +26,16 @@ function Latest_Article(props) {
             </h1>
             <hr class="underline"/>
             <div>
+
+                { posts.map( post=>
                   <Link className="latest-left-card over" style={{textDecoration:"none"}}>
 
-                       <img src="1.jpg" className="latest-left-card-img"/>
+                       <img src={post.img} className="latest-left-card-img" alt="image"/>
 
                        <div className="latest-left-card-details  link">
 
-                       <h1>This is image </h1>
-                       <p>the main body of matter in a manuscript, book, newspaper, etc., as distinguished from notes, appendixes, headings, illustrations, etc. See more.</p>
+                <h1>{post.title}</h1>
+                <p>{post.description}</p>
                        <div class="card-footer">
                     <span class="card-footer-first">Travel</span> <span class="card-footer-secons"> august 21 </span>
                 </div>
@@ -32,52 +43,8 @@ function Latest_Article(props) {
                        
                   </Link>
                   
-                  <Link className="latest-left-card over" style={{textDecoration:"none"}}>
-
-                       <img src="1.jpg" className="latest-left-card-img"/>
-
-                       <div className="latest-left-card-details  link">
-
-                       <h1>This is image </h1>
-                       <p>the main body of matter in a manuscript, book, newspaper, etc., as distinguished from notes, appendixes, headings, illustrations, etc. See more.</p>
-                       <div class="card-footer">
-                    <span class="card-footer-first">Travel</span> <span class="card-footer-secons"> august 21 </span>
-                </div>
-                       </div>
-                       
-                  </Link>
-
-                  
-                  <Link className="latest-left-card over" style={{textDecoration:"none"}}>
-
-                       <img src="1.jpg" className="latest-left-card-img"/>
-
-                       <div className="latest-left-card-details link">
-
-                       <h1>This is image </h1>
-                       <p>the main body of matter in a manuscript, book, newspaper, etc., as distinguished from notes, appendixes, headings, illustrations, etc. See more.</p>
-                       <div class="card-footer">
-                    <span class="card-footer-first">Travel</span> <span class="card-footer-secons"> august 21 </span>
-                </div>
-                       </div>
-                       
-                  </Link>
-
-                  
-                  <Link className="latest-left-card over" style={{textDecoration:"none"}}>
-
-                       <img src="1.jpg" className="latest-left-card-img"/>
-
-                       <div className="latest-left-card-details  link">
-
-                       <h1>This is image </h1>
-                       <p>the main body of matter in a manuscript, book, newspaper, etc., as distinguished from notes, appendixes, headings, illustrations, etc. See more.</p>
-                       <div class="card-footer">
-                    <span class="card-footer-first">Travel</span> <span class="card-footer-secons"> august 21 </span>
-                </div>
-                       </div>
-                       
-                  </Link>
+                )}
+             
             </div>
 
             </div>
@@ -86,49 +53,25 @@ function Latest_Article(props) {
                    Top Posts
             </h1>
             <hr class="underline"/>
+
+            {
+               posts.map( post=>
             <Link className="latest-right-card over" style={{textDecoration:"none"}}>
 
-                       <img src="1.jpg" className="latest-right-card-img"/>
+                       <img src={post.img} className="latest-right-card-img" alt="image"/>
 
                        <div className="latest-right-card-details link">
 
-                       <h1>This is image </h1>
-                       <p>the main body of matter in a manuscript, book, newspaper, etc., as distinguished from notes, appendixes, headings, illustrations, etc. See more.</p>
+               <h1>{post.title}</h1>
+               <p>{post.description}</p>
                        <div class="card-footer">
                     <span class="card-footer-first">Travel</span> <span class="card-footer-secons"> august 21 </span>
                 </div>
                        </div>
                        
                   </Link>
-                  <Link className="latest-right-card over" style={{textDecoration:"none"}}>
-
-                       <img src="2.jpg" className="latest-right-card-img"/>
-
-                       <div className="latest-right-card-details link">
-
-                       <h1>This is image </h1>
-                       <p>the main body of matter in a manuscript, book, newspaper, etc., as distinguished from notes, appendixes, headings, illustrations, etc. See more.</p>
-                       <div class="card-footer">
-                    <span class="card-footer-first">Travel</span> <span class="card-footer-secons"> august 21 </span>
-                </div>
-                       </div>
-                       
-                  </Link>
+               )}       
                   
-                  <Link className="latest-right-card over" style={{textDecoration:"none"}}>
-
-                       <img src="3.jpg" className="latest-right-card-img"/>
-
-                       <div className="latest-right-card-details link">
-
-                       <h1>This is image </h1>
-                       <p>the main body of matter in a manuscript, book, newspaper, etc., as distinguished from notes, appendixes, headings, illustrations, etc. See more.</p>
-                       <div class="card-footer">
-                    <span class="card-footer-first">Travel</span> <span class="card-footer-secons"> august 21 </span>
-                </div>
-                       </div>
-                       
-                  </Link>
             </div>
             
 
