@@ -58,7 +58,7 @@ function Latest_Article(props) {
                posts.map( post=>
             <Link className="latest-right-card over" style={{textDecoration:"none"}}>
 
-                       <img src={post.img} className="latest-right-card-img" alt="image"/>
+                       <img src={post.img} className="latest-right-card-img" alt="1.jpg"/>
 
                        <div className="latest-right-card-details link">
 

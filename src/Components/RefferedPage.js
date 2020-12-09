@@ -1,7 +1,7 @@
 
 import React , {useEffect,useState} from 'react'
-import { Link, Route } from 'react-router-dom';
-import SimilarPost from './SimilarPost';
+import { Link } from 'react-router-dom';
+
 import axios from "axios";
 
 function RefferedPage({type,action}) {
@@ -44,7 +44,7 @@ const setAction = (data)=>{
                  
                  <Link to="/PostPage/PostPage" onClick={()=>action(post)} className="latest-left-card over" style={{textDecoration:"none"}}>
 
-                 <img src={post.img} className="latest-left-card-img" alt="image"/>
+                 <img src={post.img} className="latest-left-card-img" alt="1.jpg"/>
 
                  <div className="latest-left-card-details  link">
 
@@ -72,7 +72,7 @@ const setAction = (data)=>{
 
             <Link to="/PostPage/PostPage" onClick={()=>setAction(post)} className="latest-right-card over" style={{textDecoration:"none"}}>
 
-                       <img src={post.img} className="latest-right-card-img" alt="image"/>
+                       <img src={post.img} className="latest-right-card-img" alt="1.jpg"/>
 
                        <div className="latest-right-card-details link">
 

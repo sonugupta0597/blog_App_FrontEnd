@@ -8,7 +8,7 @@ function PostPage({page}) {
     return (
        <div className="container" style={{padding:"10px"}}>
            
-           <img src={page.img} className="post-img ha" />
+           <img src={page.img} className="post-img ha" alt="1.jpg"/>
 
                <h3 style={{marginTop:"20px"}}> 
                      Title :{page.title}

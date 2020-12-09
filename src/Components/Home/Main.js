@@ -19,7 +19,7 @@ function Main({actions}) {
         <div class="homemain">
        
         <Link to="/PostPage/PostPage/i" onClick={()=>actions(main[0])} class="right over" >
-            <img class="img1 img" src={main[0].img} />
+            <img class="img1 img" src={main[0].img} alt="1.jpg"/>
     <p className="right-p">{main[0].title}</p>
     <p className="right-p1">{main[0].description}...</p>
         </Link>
@@ -27,13 +27,13 @@ function Main({actions}) {
         <div class="left">
             
             <Link to="/PostPage"  onClick={()=>actions(main[1])} class="leftImg over">
-            <img class="img1 img" src={main[1].img} alt="this image not found sorry" />
+            <img class="img1 img" src={main[1].img} alt="1.jpg" />
             
     <p className="right-p">{main[0].title}</p>
     <p className="right-p1">{main[0].description}...</p>
             </Link>
             <Link  to="/PostPage"  onClick={()=>actions(main[2])} class="leftImg over">
-            <img class="img1 img" src={main[2].img} alt="this image not found sorry" />
+            <img class="img1 img" src={main[2].img} alt="1.jpg" />
             
     <p className="right-p">{main[0].title}</p>
     <p className="right-p1">{main[0].description}...</p>

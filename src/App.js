@@ -1,11 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import Heading from './Components/Heading';
 import NavBar from './Components/NavBar';
 import Home from './Components/Home/Home';
 import { BrowserRouter as Router , Route } from "react-router-dom";
 import PostPage from './Components/PostPage/PostPage';
-import Latest_Article from './Components/Home/Latest_Article';
 import RefferedPage from './Components/RefferedPage';
 import {useState} from "react"
 
