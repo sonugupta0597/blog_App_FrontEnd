@@ -1,20 +1,20 @@
 import React  from 'react'
-import Bottom_Latest from './Bottom_Latest'
-import Latest from './Latest'
-import Latest_Article from './Latest_Article'
+import LatestArticle from './LatestArticle';
 import Main from './Main';
+import TheLatest from './TheLatest';
+import LatestStories from './LatestStories';
 
 
-function Home({action}) {
+function Home() {
 
    
   
     return (
         <div>
-          <Main actions={(data)=>action(data)} />
-          <Latest actions={(data)=>action(data)}/>
-          <Latest_Article actions={(data)=>action(data)}/>
-          <Bottom_Latest actions={(data)=>action(data)}/>
+          <Main/>
+          <TheLatest/>
+          <LatestArticle />
+          <LatestStories />
           
         </div>
     )

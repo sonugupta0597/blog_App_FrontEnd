@@ -1,47 +1,58 @@
-import React , { useEffect , useState } from 'react'
+import React, { useEffect, useState , useContext } from 'react'
 import { Link } from 'react-router-dom'
 import axios from "axios";
+import { postPageContex, similarPostContext } from '../PostPage/Context';
 
-function Main({actions}) { 
+function Main() {
 
-    const [main,setMain] = useState([{},{},{}]);
+    const [main, setMain] = useState([{}, {}, {}]);
+    const [type, setType] = useState("/mostliked");
 
-    useEffect(
-        ()=>{
-               axios.get("/main").then((res)=>{
-                      setMain(res.data);
-               }); 
-        },[main]
-    );
-
+    const {updatePostPage} = useContext(postPageContex);
+    const {updateSimilarPost} = useContext(similarPostContext);
     
+    
+
+   useEffect(() => {
+    
+    axios.get(type).then(
+        (res)=>{
+                console.log(res.data);
+                setMain(res.data);
+        }
+    )
+    
+   },[type]
+   
+   );
+
+    const setAction = (data)=>{
+   
+        updatePostPage(data);
+        console.log(main)
+        updateSimilarPost(main);
+    
+    }
+
     return (
-        <div class="homemain">
-       
-        <Link to="/PostPage/PostPage/i" onClick={()=>actions(main[0])} class="right over" >
-            <img class="img1 img" src={main[0].img} alt="1.jpg"/>
-    <p className="right-p">{main[0].title}</p>
-    <p className="right-p1">{main[0].description}...</p>
-        </Link>
-        
-        <div class="left">
-            
-            <Link to="/PostPage"  onClick={()=>actions(main[1])} class="leftImg over">
-            <img class="img1 img" src={main[1].img} alt="1.jpg" />
-            
-    <p className="right-p">{main[0].title}</p>
-    <p className="right-p1">{main[0].description}...</p>
+        <div className="homemain">
+
+            <Link to="/PostPage/PostPage" onClick={() => setAction(main[0])} className="right" >
+                <img className="img1 img over" src={main[0].urlToImage} alt="2.jpg" />
             </Link>
-            <Link  to="/PostPage"  onClick={()=>actions(main[2])} class="leftImg over">
-            <img class="img1 img" src={main[2].img} alt="1.jpg" />
-            
-    <p className="right-p">{main[0].title}</p>
-    <p className="right-p1">{main[0].description}...</p>
-            </Link>
+
+            <div className="left">
+
+                <Link to="/PostPage/PostPage" onClick={() => setAction(main[1])} className="leftImg">
+                    <img className="img1 img over" src={main[1].urlToImage} alt="1.jpg" />
+                </Link>
+                <Link to="/PostPage/PostPage" style={{ marginTop: "5px" }} onClick={() => setAction(main[2])} className="leftImg">
+                    <img className="img1 img over " src={main[2].urlToImage} alt="1.jpg" />
+                </Link>
+
+            </div>
 
         </div>
-
-    </div>
     )
 }
 

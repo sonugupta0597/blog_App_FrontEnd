@@ -1,43 +1,53 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {useContext} from 'react'
+
+import { refferedPageContext } from './PostPage/Context'
 
 
 function NavBar() {
+
+    const {updateRefferedPage} = useContext(refferedPageContext)
+
+    function updateRefferedPageVariable(page){
+                updateRefferedPage(page)
+    }
+
     return (
-        <div class="blog-header" >
+        <div className="blog-header" >
         <div>
-            <Link to="/Home" className="link" style={{textDecoration:"none"}} >
+            <Link to="/" onClick={()=>updateRefferedPageVariable("home")} className="link" style={{textDecoration:"none"}} >
             Home
             </Link>
         </div>
 
         <div>
-        <Link to="/Sports" className="link" style={{textDecoration:"none"}}>
+        <Link to="/Sports" onClick={()=>updateRefferedPageVariable("sports")} className="link" style={{textDecoration:"none"}}>
             Sports
             </Link>
         </div>
 
         <div>
-        <Link to="/Bollybood" className="link" style={{textDecoration:"none"}}>
-            Bollybood
+        <Link to="/entertainment" onClick={()=>updateRefferedPageVariable("entertainment")} className="link" style={{textDecoration:"none"}}>
+            Entertainment
             </Link>
         </div>
 
         <div>
-        <Link to="/Education" className="link" style={{textDecoration:"none"}}>
-            Education
+        <Link to="/technology" onClick={()=>updateRefferedPageVariable("technology")} className="link" style={{textDecoration:"none"}}>
+            Technology
             </Link>
         </div>
 
         <div>
-        <Link to="/Mimes" className="link" style={{textDecoration:"none"}}>
-            Mimes
+        <Link to="/science" onClick={()=>updateRefferedPageVariable("science")} className="link" style={{textDecoration:"none"}}>
+            Science
             </Link>
         </div>
 
         <div>
-        <Link to="/News" className="link" style={{textDecoration:"none"}}>
-            News
+        <Link to="/business" onClick={()=>updateRefferedPageVariable("business")} className="link" style={{textDecoration:"none"}}>
+            Business
             </Link>
         </div>
     </div>

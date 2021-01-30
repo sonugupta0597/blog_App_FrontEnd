@@ -1,29 +1,33 @@
 import React from 'react'
-import Latest from '../Home/Latest'
+import LikeAndShare from './LikeAndShare'
+import SimilarPost from '../Home/SimilarPost'
+
+function PostPage({ page, similarPost }) {
 
 
-  
-function PostPage({page}) {
-    
     return (
-       <div className="container" style={{padding:"10px"}}>
-           
-           <img src={page.img} className="post-img ha" alt="1.jpg"/>
+        <div>
+            <LikeAndShare pageTittle={page.post.title} urlToImage={"" + page.post.urlToImage} description={page.post.description} />
+            <div className="container" style={{ padding: "10px" }}>
 
-               <h3 style={{marginTop:"20px"}}> 
-                     Title :{page.title}
-               </h3>
-           <hr/>
-           <h4 style={{marginTop:"10px"}} >
-                   Description 
+                <img src={page.post.urlToImage} className="post-img ha" alt="1.jpg" />
+
+                <h3 style={{ marginTop: "20px" }}>
+                    Title :{page.post.title}
+                </h3>
+                <hr />
+                <h4 style={{ marginTop: "10px" }} >
+                    Description
           </h4>
 
-          <p>
-                 {page.description}
-          </p>
-          
-           <Latest/>
-           </div>
+                <p>
+                    {page.post.description}
+                </p>
+
+                <SimilarPost page={page.post} similarPost={similarPost.similarPost} />
+
+            </div>
+        </div>
     )
 }
 
